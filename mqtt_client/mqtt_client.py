@@ -11,6 +11,7 @@ host = "f292611f33.st1.iotda-device.cn-north-4.myhuaweicloud.com"
 deviceId = "64ae66e9b84c1334befacf21_1c697a231dd9"
 secret = "iotascfg"
 
+
 # define topic type
 MSG_UP = 0
 REQUEST = 1
