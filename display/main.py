@@ -25,6 +25,8 @@ async def ws_handler(websocket, path):
 
     global USER_EVENT
     global USER_DIAGNOSE
+    global HOSPITAL_EVENT
+    global HOSPITAL_DIAGNOSE
 
     # LOCK.acquire()
     # global STATE
@@ -106,6 +108,35 @@ def ws_srv2():
 
 app = Flask(__name__)
 
+@app.route('/get_hos', methods=['GET'])
+def get_hos():
+    data_str = '''
+        {
+            "hospital_name": "南方科技大学附属医院",
+            "hospital_phone_number": 114514,
+            "patient_info": {
+                "level": 4,
+                "text": [
+                    "该人存在某些身体状况或健康问题。正常血氧饱和度应该在95％到100％之间，而正常心率通常在每分钟60到100次之间。如果血氧低于95％，心率高于100次/分钟，这可能表明有些问题。这些症状可能是氧气不足或其他疾病或情况的结果，例如COVID-19感染、肺炎、贫血、气道疾病以及心血管疾病等，需要进一步的检查来确定原因并接受适当的治疗"
+                ],
+                "location": "学校"
+            }
+        }
+    '''
+    if connected == False:
+        return
+    global HOSPITAL_DIAGNOSE
+    while HOSPITAL_EVENT.is_set() == True:
+        continue
+    HOSPITAL_DIAGNOSE = data_str
+    print("HOSPITAL DIAGNOSE:", HOSPITAL_DIAGNOSE)
+    # inform the other thread
+    HOSPITAL_EVENT.set()
+    # return 'Hello, World!'
+    # data = request.get_json()
+    return render_template('index.html')
+
+
 
 @app.route('/', methods=['GET'])
 def hello_world():
@@ -118,14 +149,10 @@ def hello_world():
             "level": 3,
             "location": "学校",
             "text": [
-                "will die",
-                "bpm exception",
-                "I'm sorry"
+                "该人存在某些身体状况或健康问题。正常血氧饱和度应该在95％到100％之间，而正常心率通常在每分钟60到100次之间。如果血氧低于95％，心率高于100次/分钟，这可能表明有些问题。这些症状可能是氧气不足或其他疾病或情况的结果，例如COVID-19感染、肺炎、贫血、气道疾病以及心血管疾病等，需要进一步的检查来确定原因并接受适当的治疗"
             ],
             "advice": [
-                "study",
-                "play",
-                "sleep"
+    "让患者放松和休息。通风良好的环境下呼吸新鲜空气。如果患者在户外，请尽可能前往海拔较低的地方。检查患者是否有慢性呼吸道疾病。确保患者足够饮水，以避免脱水引起的心率偏高。如果患者佩戴可穿戴设备并检测到血氧饱和度低，请咨询医生是否需要进一步评估。"
             ]
         }
     '''
@@ -146,6 +173,7 @@ def hello_world():
 @app.route('/user', methods=['POST'])
 def recv_from_user():
 
+    print("recv data from /user")
     data = request.get_json()
     data_str = json.dumps(data)
     if connected == False:
@@ -161,6 +189,7 @@ def recv_from_user():
 @app.route('/hospital', methods=['POST'])
 def recv_from_hospital():
 
+    print("recv data from /hospital")
     data = request.get_json()
     data_str = json.dumps(data)
     if connected == False:

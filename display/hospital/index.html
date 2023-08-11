@@ -2,42 +2,186 @@
 <title>医院消息</title>
 
 <head>
-    <meta charset="UTF-8">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.112.5">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+
+
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            /* background-image: url('assets/img/sustech_hos.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%; */
+            /* background: url("assets/img/sustech_hos.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover; */
+            background-image: url("assets/img/sustech_hos.jpg");
+            background-position: center 0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -ms-background-size: cover;
+        }
+
+        .bg-image {
+            background-image: url("assets/img/sustech_hos.jpg");
+        }
+
         .box {
             width: 1000px;
             height: 300px;
             border: 2px solid black;
             padding: 10px;
             margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            background-color: #ccc;
+            display: flex;
         }
     </style>
-    <!-- <div style="text-align: center;">
-        <h1>尊敬的用户：</h1>
-    </div> -->
+
 </head>
 
 <body>
 
-    <!-- <div class="box">
-        <h3>发送给服务端的信息是：</h2>
-         <p><div id="msg"></div></p>
+    <!-- <box>
+        <h3>医院：</h2>
+            <p>
+            <div id="hospital_name"></div>
+            </p>
+            <h4>联系电话：</h4>
+            <p>
+            <div id="hos_ph_num"></div>
+            </p>
+    </box>
+
+    <box>
+        <h3>病人信息：</h3>
+        <h5>危险等级：</h5>
+        <div id="level"></div>
+        </p>
+        <h5>结论：</h5>
+        <div id="conl"></div>
+        </p>
+        <h5>病人位置：</h5>
+        <div id="loc"></div>
+        </p>
+
+    </box> -->
+
+
+
+
+
+
+    <!-- <div class="bg-image card shadow-1-strong"
+        style="background-image: url('assets/img/sustech_hos.jpg');">
+        <div class="card-body text-white">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk of the
+                card's content.
+            </p>
+            <a href="#!" class="btn btn-outline-light">Button</a>
+        </div>
+    </div>
+
+    <div class="bg-image card shadow-1-strong"
+        style="background-image: url('assets/img/sustech_hos.jpg');">
+        <div class="card-body text-white">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk of the
+                card's content.
+            </p>
+            <a href="#!" class="btn btn-outline-light">Button</a>
+        </div>
+    </div>
+
+
+    <div class="bg-image card shadow-1-strong"
+        style="background-image: url('assets/img/sustech_hos.jpg');">
+        <div class="card-body text-white">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk of the
+                card's content.
+            </p>
+            <a href="#!" class="btn btn-outline-light">Button</a>
+        </div>
     </div> -->
 
-    <div class="box">
-        <h3>医院：</h2>
-        <p><div id="hospital_name"></div></p>
-        <h4>联系电话：</h4>
-        <p><div id="hos_ph_num"></div></p>
-    </div>
 
-    <div class="box">
-        <h3>病人信息：</h3>
-        <p>危险等级：<div id="level"></div></p>
-        <p>结论：<div id="conl"></div></p>
-        <p>病人位置：<div id="loc"></div></p>
-    </div>
 
+
+
+
+
+
+
+    <!-- <div class="bg-image" style="background-image: url('assets/img/sustech_hos.jpg');"> -->
+
+
+        <div class="album py-5 bg-body-tertiary" style="opacity: 0.8;">
+            <div class="container-xl">
+                <div style="text-align: center;">
+                    <h1>医院：</h1>
+                </div>
+
+                <div class="row row-cols-lg-1 g-6">
+
+                    <div class="col-6 col-sm-3">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h3>医院：</h2>
+                                    <p>
+                                    <div id="hospital_name"></div>
+                                    </p>
+                                    <h4>联系电话：</h4>
+                                    <p>
+                                    <div id="hos_ph_num"></div>
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+
+                                <h3>病人信息：</h3>
+                                <h5>危险等级：</h5>
+                                <div id="level"></div>
+                                </p>
+                                <h5>结论：</h5>
+                                <div id="conl"></div>
+                                </p>
+                                <h5>病人位置：</h5>
+                                <div id="loc"></div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    <!-- </div> -->
+
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="main.js"></script>
 
