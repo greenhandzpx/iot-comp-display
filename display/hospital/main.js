@@ -9,6 +9,7 @@ socket.onmessage = function (event) {
     // alert("recv data from server");
     // alert(event.data);
     let data = JSON.parse(event.data);
+    // alert(data);
     document.getElementById("hospital_name").innerText = data["hospital_name"];
     // document.getElementById("msg").innerText = data['msg']
     document.getElementById("hos_ph_num").innerText = data["hospital_phone_number"]

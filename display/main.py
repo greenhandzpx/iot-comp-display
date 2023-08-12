@@ -165,8 +165,26 @@ def hello_world():
     print("USER DIAGNOSE:", USER_DIAGNOSE)
     # inform the other thread
     USER_EVENT.set()
-    # return 'Hello, World!'
-    # data = request.get_json()
+
+    hos_data_str = '''
+        {
+            "hospital_name": "南方科技大学医院",
+            "hospital_phone_number": "114514",
+            "patient_info": {
+                "level": "3",
+                "text": ["建议患者进行定期检查，以规避心脏疾病的风险"],
+                "location": "home"
+            }
+        }
+    '''
+    print("hospital data str", hos_data_str)
+
+    global HOSPITAL_DIAGNOSE
+    while HOSPITAL_EVENT.is_set() == True:
+        continue
+    HOSPITAL_DIAGNOSE = hos_data_str
+    HOSPITAL_EVENT.set()
+
     return render_template('index.html')
 
 
